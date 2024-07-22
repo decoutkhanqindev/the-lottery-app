@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -27,11 +28,15 @@ class MainActivity : AppCompatActivity() {
         generateNumbersBtn = findViewById(R.id.generateNumbersBtn)
 
         generateNumbersBtn.setOnClickListener {
-            val moveToSecondActivity = Intent(this, SecondActivity::class.java).putExtra(
-                "userName",
-                userName.text.toString()
-            )
-            startActivity(moveToSecondActivity)
+            if (userName.text.isEmpty()) {
+                Toast.makeText(this, "Username is not empty!!!", Toast.LENGTH_LONG).show()
+            } else {
+                val moveToSecondActivity = Intent(this, SecondActivity::class.java).putExtra(
+                    "userName",
+                    userName.text.toString()
+                )
+                startActivity(moveToSecondActivity)
+            }
         }
     }
 }
