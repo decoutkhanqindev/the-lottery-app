@@ -1,5 +1,6 @@
 package com.example.thelotteryapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -26,6 +27,10 @@ class SecondActivity : AppCompatActivity() {
         shareBtn = findViewById(R.id.shareBtn)
 
         luckyNumbers.text = generateLuckyNumbers(7)
+
+        shareBtn.setOnClickListener {
+            shareResult(receiverUsername(), luckyNumbers.text.toString())
+        }
     }
 
     private fun generateLuckyNumbers(count: Int): String =
@@ -37,4 +42,11 @@ class SecondActivity : AppCompatActivity() {
 //        return bundle?.getString("userName").toString()
 //    }
 
+    private fun shareResult(userName: String, luckyNumbers: String) =
+        startActivity(
+            Intent(Intent.ACTION_SEND)
+                .setType("text/plain") // loại dữ liệu là văn bản thuần túy (plain text).
+                .putExtra(Intent.EXTRA_SUBJECT, "$userName generates these numbers")
+                .putExtra(Intent.EXTRA_TEXT, "The Lottery Numbers are: $luckyNumbers")
+        )
 }
