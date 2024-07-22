@@ -49,12 +49,12 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:inputType="text"
         android:id="@+id/inputUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:hint="Enter your name...."
+        android:inputType="text"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
