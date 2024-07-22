@@ -28,10 +28,12 @@ class MainActivity : AppCompatActivity() {
         generateNumbersBtn = findViewById(R.id.generateNumbersBtn)
 
         generateNumbersBtn.setOnClickListener {
-            val userNameText = userName.text?.toString()
-            userNameText?.takeIf { it.isNotEmpty() }?.let {
-                startActivity(Intent(this, SecondActivity::class.java).apply { putExtra("userName", it) })
-            } ?: Toast.makeText(this, "Username is not empty!!!", Toast.LENGTH_LONG).show()
+            putUsername()
         }
     }
+
+    private fun putUsername() =
+        userName.text?.toString()?.takeIf { it.isNotEmpty() }?.let {
+            startActivity(Intent(this, SecondActivity::class.java).apply { putExtra("userName", it) })
+        } ?: Toast.makeText(this, "Username is not empty!!!", Toast.LENGTH_LONG).show()
 }
