@@ -30,4 +30,11 @@ class SecondActivity : AppCompatActivity() {
 
     private fun generateLuckyNumbers(count: Int): String =
         List(count) { (0..49).random() }.joinToString(" ")
+
+    private fun receiverUsername(): String = intent.extras?.getString("userName").toString()
+//    private fun receiverUsername (): String {
+//        var bundle: Bundle? = intent.extras
+//        return bundle?.getString("userName").toString()
+//    }
+
 }
