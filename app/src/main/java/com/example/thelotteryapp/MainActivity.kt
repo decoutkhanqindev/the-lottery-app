@@ -1,5 +1,6 @@
 package com.example.thelotteryapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -24,5 +25,13 @@ class MainActivity : AppCompatActivity() {
 
         userName = findViewById(R.id.inputUserName)
         generateNumbersBtn = findViewById(R.id.generateNumbersBtn)
+
+        generateNumbersBtn.setOnClickListener {
+            val moveToSecondActivity = Intent(this, SecondActivity::class.java).putExtra(
+                "userName",
+                userName.text.toString()
+            )
+            startActivity(moveToSecondActivity)
+        }
     }
 }
