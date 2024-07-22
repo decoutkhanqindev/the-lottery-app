@@ -30,9 +30,7 @@ class MainActivity : AppCompatActivity() {
         generateNumbersBtn.setOnClickListener {
             val userNameText = userName.text?.toString()
             userNameText?.takeIf { it.isNotEmpty() }?.let {
-                val moveToSecondActivity =
-                    Intent(this, SecondActivity::class.java).apply { putExtra("userName", it) }
-                startActivity(moveToSecondActivity)
+                startActivity(Intent(this, SecondActivity::class.java).apply { putExtra("userName", it) })
             } ?: Toast.makeText(this, "Username is not empty!!!", Toast.LENGTH_LONG).show()
         }
     }
