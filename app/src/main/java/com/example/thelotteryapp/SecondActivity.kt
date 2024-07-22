@@ -24,5 +24,10 @@ class SecondActivity : AppCompatActivity() {
 
         luckyNumbers = findViewById(R.id.luckyNumbers)
         shareBtn = findViewById(R.id.shareBtn)
+
+        luckyNumbers.text = generateLuckyNumbers(7)
     }
+
+    private fun generateLuckyNumbers(count: Int): String =
+        List(count) { (0..49).random() }.joinToString(" ")
 }
