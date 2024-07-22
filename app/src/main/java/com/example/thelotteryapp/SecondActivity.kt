@@ -42,9 +42,10 @@ class SecondActivity : AppCompatActivity() {
 //        return bundle?.getString("userName").toString()
 //    }
 
-    private fun shareResult(userName: String, luckyNumbers: String) = startActivity(
-        Intent(Intent.ACTION_SEND).setType("text/plain") // loại dữ liệu là văn bản thuần túy (plain text).
-            .putExtra(Intent.EXTRA_SUBJECT, "$userName generates these numbers")
-            .putExtra(Intent.EXTRA_TEXT, "The Lottery Numbers are: $luckyNumbers")
-    )
+    private fun shareResult(userName: String, luckyNumbers: String) =
+        startActivity(Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain" // loại dữ liệu là văn bản thuần túy (plain text).
+            putExtra(Intent.EXTRA_SUBJECT, "$userName generates these numbers")
+            putExtra(Intent.EXTRA_TEXT, "The Lottery Numbers are: $luckyNumbers")
+        })
 }
